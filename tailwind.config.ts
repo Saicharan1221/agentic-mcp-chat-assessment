@@ -26,7 +26,8 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					glow: 'hsl(var(--primary-glow))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -52,6 +53,17 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Chat-specific colors
+				'chat-user': 'hsl(var(--chat-user))',
+				'chat-user-foreground': 'hsl(var(--chat-user-foreground))',
+				'chat-assistant': 'hsl(var(--chat-assistant))',
+				'chat-assistant-foreground': 'hsl(var(--chat-assistant-foreground))',
+				'chat-system': 'hsl(var(--chat-system))',
+				'chat-system-foreground': 'hsl(var(--chat-system-foreground))',
+				// Agent colors
+				'agent-ingestion': 'hsl(var(--agent-ingestion))',
+				'agent-retrieval': 'hsl(var(--agent-retrieval))',
+				'agent-response': 'hsl(var(--agent-response))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

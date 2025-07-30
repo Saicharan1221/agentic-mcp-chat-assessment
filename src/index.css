@@ -2,41 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
+/* Agentic RAG Chatbot Design System */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core AI/Tech Color Palette */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* AI Brand Colors */
+    --primary: 217 91% 60%;  /* Bright AI blue */
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 217 91% 70%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 240 5% 26%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 240 5% 26%;
+    --muted-foreground: 240 5% 64.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 142 76% 36%;  /* Agent green */
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 240 5% 26%;
+    --input: 240 6% 10%;
+    --ring: 217 91% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Chat-specific colors */
+    --chat-user: 217 91% 60%;
+    --chat-user-foreground: 0 0% 98%;
+    --chat-assistant: 240 5% 26%;
+    --chat-assistant-foreground: 0 0% 98%;
+    --chat-system: 142 76% 36%;
+    --chat-system-foreground: 0 0% 98%;
+
+    /* Agent Status Colors */
+    --agent-ingestion: 45 93% 47%;  /* Orange */
+    --agent-retrieval: 217 91% 60%; /* Blue */
+    --agent-response: 142 76% 36%;  /* Green */
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
+    --gradient-hero: linear-gradient(135deg, hsl(240 10% 3.9%), hsl(240 5% 26%));
+    --gradient-card: linear-gradient(145deg, hsl(240 6% 10%), hsl(240 5% 26%));
+
+    /* Shadows & Effects */
+    --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.3);
+    --shadow-card: 0 4px 24px hsl(240 10% 3.9% / 0.4);
+    --shadow-agent: 0 2px 12px hsl(var(--accent) / 0.3);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +127,91 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    background: var(--gradient-hero);
+  }
+}
+
+/* Custom Components */
+@layer components {
+  .chat-message-user {
+    @apply bg-chat-user text-chat-user-foreground;
+  }
+  
+  .chat-message-assistant {
+    @apply bg-chat-assistant text-chat-assistant-foreground;
+  }
+  
+  .chat-message-system {
+    @apply bg-chat-system text-chat-system-foreground;
+  }
+  
+  .agent-status-ingestion {
+    @apply bg-agent-ingestion text-black;
+  }
+  
+  .agent-status-retrieval {
+    @apply bg-agent-retrieval text-white;
+  }
+  
+  .agent-status-response {
+    @apply bg-agent-response text-white;
+  }
+  
+  .card-gradient {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+  }
+  
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+}
+
+/* Animations */
+@layer utilities {
+  @keyframes pulse-glow {
+    0%, 100% { 
+      box-shadow: 0 0 20px hsl(217 91% 60% / 0.3);
+    }
+    50% { 
+      box-shadow: 0 0 40px hsl(217 91% 60% / 0.6);
+    }
+  }
+  
+  @keyframes agent-thinking {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  
+  @keyframes message-slide {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  .animate-agent-thinking {
+    animation: agent-thinking 1.5s ease-in-out infinite;
+  }
+  
+  .animate-message-slide {
+    animation: message-slide 0.5s ease-out;
   }
 }
