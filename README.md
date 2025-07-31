@@ -1,3 +1,5 @@
+Project  : https://agentic-mcp-chat.lovable.app
+
 # Agentic RAG Chatbot with Model Context Protocol (MCP)
 
 A sophisticated full-stack Retrieval-Augmented Generation (RAG) chatbot system that uses a multi-agent architecture with Model Context Protocol for intelligent document processing and question answering.
